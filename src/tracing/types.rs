@@ -729,7 +729,7 @@ impl CallTraceStep {
     // Returns true if the status code is an error or revert, See [InstructionResult::Revert]
     #[inline]
     pub(crate) const fn is_error(&self) -> bool {
-        self.status as u8 >= InstructionResult::Revert as u8
+        self.status.to_code() >= InstructionResult::Revert.to_code()
     }
 
     /// Returns the error message if it is an erroneous result.
